@@ -3,8 +3,8 @@ require'telescope'.setup {
     frecency = {
       ignore_patterns = {"*.git/*", "*/tmp/*", "*/__pycache__/*"},
       workspaces = {
-	["config"] = vim.fn.expand("~/.config"),
-	["nvimconfig"] = vim.fn.expand("~/.config/nvim")
+        ["config"] = vim.fn.expand("~/.config"),
+        ["nvimconfig"] = vim.fn.expand("~/.config/nvim")
       }
     }
   }
