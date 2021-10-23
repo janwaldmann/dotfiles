@@ -2,6 +2,8 @@
 	editor = nvim
 [user]
 	name = Jan Waldmann
+[pull]
+	rebase = true
 [merge]
 	tool = vimdiff
 [mergetool]
@@ -13,5 +15,6 @@
 	prompt = false
 [diff]
 	tool = vimdiff
+	colorMoved = dimmed-zebra
 [init]
 	defaultBranch = main
