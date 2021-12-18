@@ -31,7 +31,7 @@ download() {
     -O "${tmp_dir}/${pyarchive}.tgz.asc" 
   if ! gpg --verify "${tmp_dir}/${pyarchive}.tgz.asc"; then
     err "Signature check of downloaded files failed - make sure the GPG keys are imported"
-    rm "${tmp_dir:?}/${pyarchive}.tgz" && rm "${tmp_dir:?}/${pyfile}.tgz.asc"
+    rm "${tmp_dir:?}/${pyarchive:?}.tgz" && rm "${tmp_dir:?}/${pyarchive:?}.tgz.asc"
     exit 1
   fi
 }
@@ -43,7 +43,7 @@ extract() {
   fi
   echo "Extracting sources to '${source_dir}'"
   tar -xf "${tmp_dir}/${pyarchive}.tgz" -C "${tmp_dir}"
-  rm "${tmp_dir:?}/${pyarchive}.tgz" && rm "${tmp_dir:?}/${pyfile}.tgz.asc"
+  rm "${tmp_dir:?}/${pyarchive:?}.tgz" && rm "${tmp_dir:?}/${pyarchive:?}.tgz.asc"
 }
 
 build() {
