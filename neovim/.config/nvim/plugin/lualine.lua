@@ -18,8 +18,8 @@ require('lualine').setup{
     lualine_b = {'branch'},
     lualine_c = {{'filename', path = 1}, 'diff', {treelocation}},
     lualine_x = {'encoding', 'fileformat'},
-    lualine_y = {'progress'},
-    lualine_z = {{'diagnostics', sources = {'nvim_diagnostic'}}}
+    lualine_y = {{'diagnostics', sources = {'nvim_diagnostic'}}},
+    lualine_z = {'location'}
   },
   inactive_sections = {
     lualine_a = {},
