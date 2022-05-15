@@ -16,8 +16,7 @@ local dl = require('luasnip.extras').dynamic_lambda
 local types = require('luasnip.util.types')
 local events = require('luasnip.util.events')
 
-ls.snippets = {
-  all = {
+ls.add_snippets("all", {
     s({
       trig="#ifndef",
       name="header guard",
@@ -48,5 +47,6 @@ ls.snippets = {
       i(5, "The desc of the return value(s)"),
       t({"", " */"}),
     }),
-  }
-}
+}, {
+  key = "all",
+})
