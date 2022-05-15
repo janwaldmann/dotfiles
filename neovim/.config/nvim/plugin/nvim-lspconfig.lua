@@ -1,9 +1,6 @@
 local nvim_lsp = require('lspconfig')
 local custom_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Keymaps
   local opts = { noremap = true, silent = true }
@@ -90,7 +87,7 @@ nvim_lsp.bashls.setup{
 -- C++
 nvim_lsp.clangd.setup{
   capabilities = capabilities,
-  filetypes = {'c', 'cc', 'cpp', 'objc', 'objcpp'},
+  filetypes = {'h', 'hpp', 'c', 'cc', 'cpp', 'objc', 'objcpp'},
   on_attach = custom_attach
 }
 
