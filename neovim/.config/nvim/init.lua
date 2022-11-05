@@ -21,6 +21,6 @@ vim.cmd 'colorscheme gruvbox-material'
 require('snippets')
 
 -- Leader
-vim.api.nvim_set_keymap('n', ',', '', {noremap = true})
+vim.keymap.set('n', ',', '', {noremap = true})
 vim.g.mapleader = ','
-vim.api.nvim_set_keymap('n', [[\]], ',', {noremap = true})
+vim.keymap.set('n', '\\', ',', {noremap = true})
