@@ -23,8 +23,8 @@ require('packer').startup(function(use)
       requires = 'tami5/sql.nvim',
     },
   }
-  use {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
-  use {'hoob3rt/lualine.nvim', requires={'kyazdani42/nvim-web-devicons'}}
+  use 'nvim-treesitter/nvim-treesitter'
+  use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
   use 'tpope/vim-commentary'
   use 'sainnhe/gruvbox-material'
 end)

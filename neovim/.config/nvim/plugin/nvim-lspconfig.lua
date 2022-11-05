@@ -20,29 +20,19 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<leader>]d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     buf_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     buf_set_keymap('n', '<leader>fo', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
   end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Lua
-local system_name
-if vim.fn.has('mac') == 1 then
-  system_name = 'macOS'
-elseif vim.fn.has('unix') == 1 then
-  system_name = 'Linux'
-elseif vim.fn.has('win32') == 1 then
-  system_name = 'Windows'
-else
-  print('lua-language-server: could not determine host OS')
-end
 local sumneko_root_path = vim.g.sumneko_root_path
-local sumneko_binary = sumneko_root_path..'/bin/'..system_name..'/lua-language-server'
+local sumneko_binary = sumneko_root_path..'/bin/lua-language-server'
 nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
   cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'},
@@ -51,16 +41,12 @@ nvim_lsp.sumneko_lua.setup {
     Lua = {
       runtime = {
         version = 'LuaJIT',
-        path = vim.split(package.path, ';'),
       },
       diagnostics = {
         globals = {'vim'},
       },
       workspace = {
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
+        library = vim.api.nvim_get_runtime_file("", true),
       },
       telemetry = {
         enable = false,
