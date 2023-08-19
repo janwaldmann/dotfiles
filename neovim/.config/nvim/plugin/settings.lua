@@ -23,4 +23,4 @@ vim.opt.colorcolumn = '79'
 vim.opt.shortmess:append 'c'
 vim.g.python_recommended_style = 1
 vim.lsp.set_log_level('error')
-vim.opt.mouse = 'n'
+vim.opt.mouse = ''
