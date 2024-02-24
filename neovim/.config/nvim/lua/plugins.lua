@@ -2,7 +2,7 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
     'neovim/nvim-lspconfig',
-    commit = '67f151e84daddc86cc65f5d935e592f76b9f4496'
+    tag = 'v0.1.7'
   }
   use {
     'hrsh7th/nvim-cmp',
@@ -28,9 +28,10 @@ require('packer').startup(function(use)
   }
   use {
     'nvim-treesitter/nvim-treesitter',
-    tag = 'v0.9.1'
+    commit = 'c06292fdc641d71d185d2f1a507ad8232b6cf528'
   }
   use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
   use 'tpope/vim-commentary'
+  use 'lervag/vimtex'
   use 'sainnhe/gruvbox-material'
 end)
