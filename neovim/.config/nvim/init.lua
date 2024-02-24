@@ -1,3 +1,6 @@
+-- Local leader
+vim.g.maplocalleader = ','
+
 -- Packer
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -21,3 +24,6 @@ require('snippets')
 vim.keymap.set('n', ',', '', { noremap = true })
 vim.g.mapleader = ','
 vim.keymap.set('n', '\\', ',', { noremap = true })
+
+-- vimtex
+vim.g.vimtex_preview_method = 'evince'
