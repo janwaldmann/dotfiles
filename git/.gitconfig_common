@@ -4,6 +4,14 @@
 	name = Jan Waldmann
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
+[rebase]
+	updateRefs = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [commit]
 	gpgsign = true
 [merge]
@@ -13,10 +21,19 @@
 	keepBackup = false
 [mergetool "vimdiff"]
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[rerere]
+	enabled = true
 [difftool]
 	prompt = false
 [diff]
 	tool = vimdiff
 	colorMoved = dimmed-zebra
+	algorithm = histogram
+	renames = true
+	mnemonicPrefix = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
 [init]
 	defaultBranch = main
