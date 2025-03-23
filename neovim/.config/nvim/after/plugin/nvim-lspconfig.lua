@@ -7,18 +7,24 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 require 'lspconfig'.lua_ls.setup {
   capabilities = capabilities,
   on_init = function(client)
-    local path = client.workspace_folders[1].name
-    if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-      client.config.settings = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-        runtime = {
-          version = 'LuaJIT'
-        },
-        workspace = {
-          library = { vim.env.VIMRUNTIME },
-        },
-      })
-      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      -- TODO: luv is not globally available at this point
+      if path ~= vim.fn.stdpath('config') and ((vim.uv or vim.loop).fs_stat(path .. '/.luarc.json') or (vim.uv or vim.loop).fs_stat(path .. '/.luarc.jsonc')) then
+        return
+      end
     end
+    client.config.settings = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        version = 'LuaJIT'
+      },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME
+        },
+      },
+    })
+    client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
     return true
   end
 }
