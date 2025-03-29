@@ -1,10 +1,11 @@
 vim.opt.guicursor = ''
 vim.opt.path:prepend '**'
-vim.opt.wildignore:append {'*/__pycache__/*', '.*', '*.egg-info/'}
+vim.opt.wildignore:append { '*/__pycache__/*', '.*', '*.egg-info/' }
 vim.opt.termguicolors = true
 vim.opt.hlsearch = false
-vim.opt.ignorecase= true
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.inccommand = 'split'
 vim.opt.hidden = true
 vim.opt.cindent = true
 vim.opt.relativenumber = true
