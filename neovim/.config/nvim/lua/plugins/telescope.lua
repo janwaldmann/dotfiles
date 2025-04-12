@@ -1,5 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
+  enabled = false, -- fzf-lua is snappier on large repos
   dependencies = {
     'nvim-lua/plenary.nvim',
     {
@@ -15,6 +16,8 @@ return {
     local datapath = vim.fn.stdpath('data')
     telescope.setup {
       defaults = {
+        selection_stratgy = 'closest',
+        path_display = { 'truncate' },
         file_ignore_patterns = { '.*%.svg' },
         history = {
           ---@diagnostic disable-next-line: param-type-mismatch
@@ -46,5 +49,6 @@ return {
     vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
     vim.keymap.set('n', '<leader>gf', builtin.git_files, opts)
+    vim.keymap.set('n', '<leader>fr', builtin.resume, opts)
   end
 }
