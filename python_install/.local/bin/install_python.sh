@@ -5,7 +5,7 @@
 #
 # make altinstall is used for installation, which means the binary has a
 # version suffix.
-# 
+#
 
 err() {
   echo "ERROR: $*" >&2
@@ -29,7 +29,7 @@ download() {
   wget "https://www.python.org/ftp/python/${pyversion}/${pyarchive}.tgz" \
     -O "${tmp_dir}/${pyarchive}.tgz" || exit 1
   wget "https://www.python.org/ftp/python/${pyversion}/${pyarchive}.tgz.asc" \
-    -O "${tmp_dir}/${pyarchive}.tgz.asc" 
+    -O "${tmp_dir}/${pyarchive}.tgz.asc"
   if ! gpg --verify "${tmp_dir}/${pyarchive}.tgz.asc"; then
     err "Signature check of downloaded files failed - make sure the GPG keys are imported"
     rm "${tmp_dir:?}/${pyarchive:?}.tgz" && rm "${tmp_dir:?}/${pyarchive:?}.tgz.asc"
@@ -70,7 +70,7 @@ main() {
   readonly pyversion="$1"
   if [[ -z "${TMPDIR}" ]]; then
     readonly tmp_dir="/tmp"
-  else 
+  else
     readonly tmp_dir="${TMPDIR}"
   fi
   echo "Using '${tmp_dir}' for temporary files"

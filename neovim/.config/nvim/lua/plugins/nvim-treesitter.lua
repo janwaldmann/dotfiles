@@ -3,9 +3,10 @@ return {
   build = ':TSUpdate',
   lazy = false,
   opts = {
-    ensure_installed = { 'bash', 'c', 'cmake', 'cpp', 'cuda', 'diff',
-      'dockerfile', 'go', 'json', 'llvm', 'lua', 'make', 'markdown',
-      'ninja', 'python', 'rust', 'rst', 'toml', 'vim', 'yaml' },
+    ensure_installed = { 'bash', 'c', 'cmake', 'cpp', 'diff',
+      'dockerfile', 'go', 'json', 'lua', 'make', 'markdown', 'markdown_inline',
+      'ninja', 'python', 'rust', 'rst', 'toml', 'vim', 'vimdoc', 'yaml',
+      'starlark', 'proto', 'groovy' },
     sync_install = false,
     auto_install = false,
     highlight = {
