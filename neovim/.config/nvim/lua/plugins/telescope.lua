@@ -5,16 +5,16 @@ return {
     'nvim-lua/plenary.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
     },
     'nvim-telescope/telescope-smart-history.nvim',
-    'kkharji/sqlite.lua'
+    'kkharji/sqlite.lua',
   },
   config = function()
     local telescope = require('telescope')
     local telescope_actions = require('telescope.actions')
     local datapath = vim.fn.stdpath('data')
-    telescope.setup {
+    telescope.setup({
       defaults = {
         selection_stratgy = 'closest',
         path_display = { 'truncate' },
@@ -22,14 +22,14 @@ return {
         history = {
           ---@diagnostic disable-next-line: param-type-mismatch
           path = vim.fs.joinpath(datapath, 'telescope_history.sqlite3'),
-          limit = 60
+          limit = 60,
         },
         mappings = {
           i = {
             ['<C-Down>'] = telescope_actions.cycle_history_next,
             ['<C-Up>'] = telescope_actions.cycle_history_prev,
-          }
-        }
+          },
+        },
       },
       extensions = {
         fzf = {
@@ -37,9 +37,9 @@ return {
           override_generic_sorter = true,
           override_file_sorter = true,
           case_mode = 'smart_case',
-        }
-      }
-    }
+        },
+      },
+    })
     telescope.load_extension('fzf')
     telescope.load_extension('smart_history')
     local opts = { noremap = true }
@@ -50,5 +50,5 @@ return {
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
     vim.keymap.set('n', '<leader>gf', builtin.git_files, opts)
     vim.keymap.set('n', '<leader>fr', builtin.resume, opts)
-  end
+  end,
 }

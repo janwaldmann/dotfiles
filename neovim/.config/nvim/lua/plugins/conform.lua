@@ -23,6 +23,7 @@ return {
       sh = { 'shfmt' },
       json = { 'jq' },
       tex = { 'latexindent' },
+      lua = { 'stylua' },
       markdown = { 'trim_whitespace', 'trim_newlines' },
     },
     default_format_opts = {

@@ -28,7 +28,7 @@ return {
     end
 
     vim.lsp.config('*', {
-      capabilities = require('blink.cmp').get_lsp_capabilities()
+      capabilities = require('blink.cmp').get_lsp_capabilities(),
     })
 
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -43,19 +43,22 @@ return {
         vim.keymap.set('n', '<leader>vs', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
         vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-        vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-          bufopts)
+        vim.keymap.set('n', '<leader>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
         vim.keymap.set('n', '<leader>vt', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
         vim.keymap.set('n', '<leader>vr', vim.lsp.buf.references, bufopts)
         vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, bufopts)
-        vim.keymap.set('n', '<leader>[d', function() vim.diagnostic.jump({ count = 1, float = true, wrap = false }) end,
-          bufopts)
-        vim.keymap.set('n', '<leader>]d', function() vim.diagnostic.jump({ count = -1, float = true, wrap = false }) end,
-          bufopts)
+        vim.keymap.set('n', '<leader>[d', function()
+          vim.diagnostic.jump({ count = 1, float = true, wrap = false })
+        end, bufopts)
+        vim.keymap.set('n', '<leader>]d', function()
+          vim.diagnostic.jump({ count = -1, float = true, wrap = false })
+        end, bufopts)
         vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, bufopts)
-      end
+      end,
     })
-  end
+  end,
 }

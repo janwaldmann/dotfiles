@@ -1,6 +1,6 @@
 vim.opt.guicursor = ''
-vim.opt.path:prepend '**'
-vim.opt.wildignore:append { '*/__pycache__/*', '.*', '*.egg-info/' }
+vim.opt.path:prepend('**')
+vim.opt.wildignore:append({ '*/__pycache__/*', '.*', '*.egg-info/' })
 vim.opt.termguicolors = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
@@ -21,7 +21,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.showmatch = true
 vim.opt.updatetime = 1000
 vim.opt.colorcolumn = '79'
-vim.opt.shortmess:append 'c'
+vim.opt.shortmess:append('c')
 vim.g.python_recommended_style = 1
 vim.lsp.set_log_level('error')
 vim.opt.mouse = ''
