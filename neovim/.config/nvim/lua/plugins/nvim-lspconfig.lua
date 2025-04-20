@@ -1,27 +1,31 @@
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPost', 'BufNewFile' },
-  cmd = { 'LspInfo', 'LspStart', 'LspStop', 'LspRestart' },
-  dependencies = { 'saghen/blink.cmp' },
-  config = function()
-    -- TODO: move the LS configs below into opts
-    local default_ls = { 'lua_ls',
-      'rust_analyzer',
-      'bashls',
-      'clangd',
-      'jedi_language_server' }
-    vim.lsp.enable(default_ls)
-
-    vim.lsp.config('clangd', {
-      cmd = {
-        'clangd',
-        '--clang-tidy',
-        '--background-index',
-        '--header-insertion=iwyu',
-        '--log=error',
-        '-j=2',
+  cmd = { 'LspInfo', 'LspStart', 'LspStop', 'LspRestart', 'LspLog' },
+  dependencies = { 'saghen/blink.cmp', { 'j-hui/fidget.nvim', opts = {} } },
+  opts = {
+    servers = {
+      lua_ls = {},
+      rust_analyzer = {},
+      bashls = {},
+      clangd = {
+        cmd = {
+          'clangd',
+          '--clang-tidy',
+          '--background-index',
+          '--header-insertion=iwyu',
+          '--log=error',
+          '-j=4',
+        },
       },
-    })
+      jedi_language_server = {},
+    },
+  },
+  config = function(_, opts)
+    for server, config in pairs(opts.servers) do
+      vim.lsp.enable(server)
+      vim.lsp.config(server, config)
+    end
 
     vim.lsp.config('*', {
       capabilities = require('blink.cmp').get_lsp_capabilities()

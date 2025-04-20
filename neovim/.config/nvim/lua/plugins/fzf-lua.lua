@@ -1,23 +1,21 @@
 return {
-  "ibhagwan/fzf-lua",
+  'ibhagwan/fzf-lua',
   enabled = true,
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    local fzflua = require('fzf-lua')
-    fzflua.setup({
-      winopts = {
-        preview = {
-          vertical = "down:55%", -- up|down:size
-          layout   = "vertical", -- horizontal|vertical|flex
-        },
-      }
-    })
-    local opts = { noremap = true }
-    vim.keymap.set('n', '<leader>ff', fzflua.files, opts)
-    vim.keymap.set('n', '<leader>fg', fzflua.live_grep, opts)
-    vim.keymap.set('n', '<leader>fb', fzflua.buffers, opts)
-    vim.keymap.set('n', '<leader>fh', fzflua.helptags, opts)
-    vim.keymap.set('n', '<leader>gf', fzflua.git_files, opts)
-    vim.keymap.set('n', '<leader>fr', fzflua.resume, opts)
-  end
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  keys = {
+    { '<leader>ff', '<cmd>FzfLua files<cr>',             desc = 'Find files',            noremap = true },
+    { '<leader>fr', '<cmd>FzfLua files resume=true<cr>', desc = 'Find files (resume)',   noremap = true },
+    { '<leader>fg', '<cmd>FzfLua live_grep<cr>',         desc = 'Live grep',             noremap = true },
+    { '<leader>fb', '<cmd>FzfLua buffers<cr>',           desc = 'Find buffers',          noremap = true },
+    { '<leader>fh', '<cmd>FzfLua helptags<cr>',          desc = 'Find help tags',        noremap = true },
+    { '<leader>gf', '<cmd>FzfLua git_files<cr>',         desc = 'Find repository files', noremap = true },
+  },
+  opts = {
+    winopts = {
+      preview = {
+        vertical = 'down:65%', -- up|down:size
+        layout   = 'vertical', -- horizontal|vertical|flex
+      },
+    }
+  },
 }

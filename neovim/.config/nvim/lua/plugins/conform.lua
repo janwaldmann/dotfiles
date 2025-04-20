@@ -18,9 +18,12 @@ return {
       python = { 'isort', 'black' },
       rust = { 'rustfmt' },
       c = { 'clang-format' },
+      cpp = { 'clang-format' },
       bzl = { 'buildifier' },
       sh = { 'shfmt' },
       json = { 'jq' },
+      tex = { 'latexindent' },
+      markdown = { 'trim_whitespace', 'trim_newlines' },
     },
     default_format_opts = {
       lsp_format = 'fallback',
