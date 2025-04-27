@@ -31,7 +31,8 @@ download() {
   wget "https://www.python.org/ftp/python/${pyversion}/${pyarchive}.tgz.asc" \
     -O "${tmp_dir}/${pyarchive}.tgz.asc"
   if ! gpg --verify "${tmp_dir}/${pyarchive}.tgz.asc"; then
-    err "Signature check of downloaded files failed - make sure the GPG keys are imported"
+    err "Signature check of downloaded files failed - make sure the GPG keys are imported!"
+    err "--> See https://www.python.org/downloads/metadata/pgp/"
     rm "${tmp_dir:?}/${pyarchive:?}.tgz" && rm "${tmp_dir:?}/${pyarchive:?}.tgz.asc"
     exit 1
   fi
@@ -81,8 +82,8 @@ main() {
   readonly pyarchive="Python-${pyversion}"
   readonly source_dir="${tmp_dir}/${pyarchive}"
 
-  install_deps
   download
+  install_deps
   extract
   build
   clean_up
