@@ -19,6 +19,7 @@ return {
         },
       },
       jedi_language_server = {},
+      gopls = {},
     },
   },
   config = function(_, opts)

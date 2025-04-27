@@ -25,6 +25,7 @@ return {
       tex = { 'latexindent' },
       lua = { 'stylua' },
       markdown = { 'trim_whitespace', 'trim_newlines' },
+      go = { 'gofmt' },
     },
     default_format_opts = {
       lsp_format = 'fallback',
