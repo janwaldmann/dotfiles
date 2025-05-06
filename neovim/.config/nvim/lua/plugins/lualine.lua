@@ -8,7 +8,7 @@ return {
     options = {
       icons_enabled = true,
       padding = 2,
-      theme = 'gruvbox-material',
+      theme = 'catppuccin',
     },
     sections = {
       lualine_a = { 'mode' },

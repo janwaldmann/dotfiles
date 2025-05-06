@@ -23,10 +23,13 @@ vim.keymap.set('n', ',', '', { noremap = true })
 vim.g.mapleader = ','
 vim.keymap.set('n', '\\', ',', { noremap = true })
 
+-- Unmap normal mode C-a (my tmux prefix)
+vim.keymap.set('n', '<C-a>', '<Nop>', { noremap = true })
+
 require('lazy').setup({
   spec = {
     { import = 'plugins' },
   },
-  install = { colorscheme = { 'gruvbox-material' } },
+  install = { colorscheme = { 'catppuccin' } },
   checker = { enabled = false },
 })

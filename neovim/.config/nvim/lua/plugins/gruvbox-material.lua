@@ -2,6 +2,7 @@ return {
   'sainnhe/gruvbox-material',
   lazy = false,
   priority = 1000,
+  enabled = false,
   init = function()
     vim.o.background = 'dark'
     vim.g.gruvbox_material_enable_italic = 1
