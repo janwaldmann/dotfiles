@@ -5,27 +5,34 @@ return {
   dependencies = { 'saghen/blink.cmp', { 'j-hui/fidget.nvim', opts = {} } },
   opts = {
     servers = {
-      lua_ls = {},
-      rust_analyzer = {},
-      bashls = {},
+      lua_ls = { enabled = true },
+      rust_analyzer = { enabled = false },
+      bashls = { enabled = false },
       clangd = {
-        cmd = {
-          'clangd',
-          '--clang-tidy',
-          '--background-index',
-          '--header-insertion=iwyu',
-          '--log=error',
-          '-j=4',
+        enabled = false,
+        user_config = {
+          cmd = {
+            'clangd',
+            '--clang-tidy',
+            '--background-index',
+            '--header-insertion=iwyu',
+            '--log=error',
+            '-j=4',
+          },
         },
       },
-      jedi_language_server = {},
-      gopls = {},
+      jedi_language_server = { enabled = false },
+      gopls = { enabled = false },
     },
   },
   config = function(_, opts)
     for server, config in pairs(opts.servers) do
-      vim.lsp.enable(server)
-      vim.lsp.config(server, config)
+      if config.enabled then
+        vim.lsp.enable(server)
+        if config.user_config then
+          vim.lsp.config(server, config.user_config)
+        end
+      end
     end
 
     vim.lsp.config('*', {
