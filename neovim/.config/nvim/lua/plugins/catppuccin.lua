@@ -10,6 +10,7 @@ return {
         blink_cmp = true,
         fidget = true,
         fzf = true,
+        indent_blankline = { enabled = true },
       },
     })
     vim.cmd([[colorscheme catppuccin]])
