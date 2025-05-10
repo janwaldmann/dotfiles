@@ -1,0 +1,6 @@
+font-family = "JetBrainsMono Nerd Font"
+font-size = 10.0
+theme = catppuccin-frappe.conf
+
+# Avoid conflicts with window managers and friends
+keybind = clear
