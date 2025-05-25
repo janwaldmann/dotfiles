@@ -6,6 +6,7 @@
 	rebase = true
 [push]
 	autoSetupRemote = true
+	gpgSign = if-asked
 [rebase]
 	updateRefs = true
 [fetch]
@@ -13,7 +14,7 @@
 	pruneTags = true
 	all = true
 [commit]
-	gpgsign = true
+	gpgSign = true
 [merge]
 	tool = vimdiff
 [mergetool]
@@ -30,7 +31,6 @@
 	colorMoved = dimmed-zebra
 	algorithm = histogram
 	renames = true
-	mnemonicPrefix = true
 [branch]
 	sort = -committerdate
 [tag]
