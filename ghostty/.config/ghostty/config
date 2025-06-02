@@ -2,5 +2,10 @@ font-family = "JetBrainsMono Nerd Font"
 font-size = 10.0
 theme = catppuccin-frappe.conf
 
-# Avoid conflicts with window managers and friends
+# Avoid conflicts with window managers and friends...
 keybind = clear
+# but bring back the most important workflow :)
+keybind = shift+insert=paste_from_selection
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = performable:ctrl+shift+c=copy_to_clipboard
+keybind = performable:ctrl+insert=copy_to_clipboard
