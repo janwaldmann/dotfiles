@@ -1,15 +1,13 @@
 return {
   'neovim/nvim-lspconfig',
-  event = { 'BufReadPost', 'BufNewFile' },
-  cmd = { 'LspInfo', 'LspStart', 'LspStop', 'LspRestart', 'LspLog' },
   dependencies = { 'saghen/blink.cmp', { 'j-hui/fidget.nvim', opts = {} } },
   opts = {
     servers = {
       lua_ls = { enabled = true },
-      rust_analyzer = { enabled = false },
-      bashls = { enabled = false },
+      rust_analyzer = { enabled = true },
+      bashls = { enabled = true },
       clangd = {
-        enabled = false,
+        enabled = true,
         user_config = {
           cmd = {
             'clangd',
@@ -22,7 +20,7 @@ return {
         },
       },
       jedi_language_server = { enabled = false },
-      gopls = { enabled = false },
+      gopls = { enabled = true },
     },
   },
   config = function(_, opts)
