@@ -1,7 +1,7 @@
 return {
   'saghen/blink.cmp',
   event = 'InsertEnter',
-  build = 'cargo +nightly build --release',
+  build = 'cargo build --release',
   dependencies = {
     {
       'folke/lazydev.nvim',
