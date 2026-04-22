@@ -21,5 +21,5 @@ vim.opt.showmatch = true
 vim.opt.updatetime = 1000
 vim.opt.shortmess:append('c')
 vim.g.python_recommended_style = 1
-vim.lsp.set_log_level('error')
+vim.lsp.log.set_level('error')
 vim.opt.mouse = ''

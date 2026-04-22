@@ -8,7 +8,6 @@ return {
     options = {
       icons_enabled = true,
       padding = 2,
-      theme = 'catppuccin',
     },
     sections = {
       lualine_a = { 'mode' },
